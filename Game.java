@@ -4,7 +4,9 @@ public class Game {
 
 	static int _zeilen = 3;
 	static int _spalten = 3;
-	static String [][] feld = spielfeldAnlegen(_zeilen, _spalten);
+	static String [][] mienenfeld = spielfeldAnlegen(_zeilen, _spalten, true);
+	static String [][] spielfeld = spielfeldAnlegen(_zeilen, _spalten, false);
+	static int mienen = 0;
 
 	public static void main(String[] args) {
 
@@ -18,12 +20,12 @@ public class Game {
 		}
 	}
 	public static boolean spielfeldprüfen(int Zeile, int Spalte) {
-		if (feld[Zeile][Spalte] == "[X]") {
+		if (mienenfeld[Zeile][Spalte] == "[X]") {
 			System.out.println("Bummmm - du hast Leider die Mine erwischt!!!!");
 			System.out.println("GAME OVER");
 			return true;
 		}else {
-			feld[Zeile][Spalte] = "[*]";
+			mienenfeld[Zeile][Spalte] = "[*]";
 		}
 		return false;
 	}
@@ -36,14 +38,14 @@ public class Game {
 	public static void spielfeldAnzeigen() {
 		for (int z = 0; z < _zeilen; z++) {
 			for (int s = 0; s < _spalten; s++) {
-				System.out.print(feld[z][s]);
+				System.out.print(spielfeld[z][s]);
 			}
 
 			System.out.println();
 		}
 		System.out.println("--------------------------------------------");
 	}
-	public static String[][] spielfeldAnlegen(int Zeilen, int Spalten) {
+	public static String[][] spielfeldAnlegen(int Zeilen, int Spalten, boolean mienenanlegen) {
 		String[][] minefield = new String[Zeilen][Spalten];
 		for (int z = 0; z < Zeilen; z++) {
 			for (int s = 0; s < Spalten; s++) {
@@ -53,7 +55,9 @@ public class Game {
 		minefield[2][0] = "[X]";
 		minefield[2][2] = "[X]";
 		minefield[0][2] = "[X]";
+		mienen = 3;
 		return minefield;
 	}
+	
 
 }
