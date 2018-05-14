@@ -6,7 +6,7 @@ public class Game {
 	static int _spalten = 3;
 	static String[][] minenfeld = spielfeldAnlegen(_zeilen, _spalten, true);
 	static String[][] spielfeld = spielfeldAnlegen(_zeilen, _spalten, false);
-	static int mines = 0;
+	static int minen = 0;
 	static int versuche = 0;
 
 	public static void main(String[] args) {
@@ -23,8 +23,8 @@ public class Game {
 		if (minenfeld[zeile][spalte] == "[x]") {
 			spielfeld[zeile][spalte] = "-X-";
 			spielfeldAnzeigen();
-			System.out.println("Bummm\nDu hast leider die Mine erwischt...");
-			System.out.println("Game over!");
+			System.out.println("Bummm - Du hast leider die Mine erwischt...");
+			System.out.println("GAME OVER..x");
 			return true;
 		} else {
 			spielfeld[zeile][spalte] = "[*]";
@@ -38,7 +38,7 @@ public class Game {
 		int zahl = Integer.parseInt(eingabe);
 		
 		if (zahl > max || zahl < 0) {
-			JOptionPane.showMessageDialog(null, "!!!Number between 0 and " + max + "!!!");
+			System.out.println(" Bitte einen nummer zwischen 0 und " + max + " eingeben!!!");
 			String eingabe1 = JOptionPane.showInputDialog(hinweis);
 			zahl = Integer.parseInt(eingabe1);
 		}
@@ -54,23 +54,23 @@ public class Game {
 			}
 			System.out.println();
 		}
-		System.out.println("---------");
+		System.out.println("::::::::::");
 	}
 
 	public static String[][] spielfeldAnlegen(int zeilen, int spalten, boolean mienenAnlegen) {
-		String[][] mineField = new String[zeilen][spalten];
+		String[][] minenField = new String[zeilen][spalten];
 		for (int z = 0; z < zeilen; z++) {
 			for (int s = 0; s < spalten; s++) {
-				mineField[z][s] = "[ ]";
+				minenField[z][s] = "[ ]";
 			}
 		}
 		if (mienenAnlegen) {
-			mineField[(zeilen - 1)][0] = "[x]";
-			mineField[(zeilen - 1)][(spalten - 1)] = "[x]";
-			mineField[0][(spalten - 1)] = "[x]";
-			mines = 3;
+			minenField[(zeilen - 1)][0] = "[x]";
+			minenField[(zeilen - 1)][(spalten - 1)] = "[x]";
+			minenField[0][(spalten - 1)] = "[x]";
+			minen = 3;
 		}
-		return mineField;
+		return minenField;
 	}
 
 }
