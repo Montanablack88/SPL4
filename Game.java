@@ -7,6 +7,7 @@ public class Game {
 	static String [][] mienenfeld = spielfeldAnlegen(_zeilen, _spalten, true);
 	static String [][] spielfeld = spielfeldAnlegen(_zeilen, _spalten, false);
 	static int mienen = 0;
+	static int versuche = 0;
 
 	public static void main(String[] args) {
 
@@ -21,13 +22,15 @@ public class Game {
 	}
 	public static boolean spielfeldprüfen(int Zeile, int Spalte) {
 		if (mienenfeld[Zeile][Spalte] == "[X]") {
+			spielfeld[Zeile][Spalte] = "[X]";
 			System.out.println("Bummmm - du hast Leider die Mine erwischt!!!!");
-			System.out.println("GAME OVER");
+			System.out.println("GAME OVER...");
 			return true;
 		}else {
-			mienenfeld[Zeile][Spalte] = "[*]";
+			spielfeld[Zeile][Spalte] = "[*]";
+			return false;
 		}
-		return false;
+
 	}
 	
 	public static int eingeben(String hinweis) {
