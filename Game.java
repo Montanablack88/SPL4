@@ -43,7 +43,7 @@ public class Game {
 
 			System.out.println();
 		}
-		System.out.println("--------------------------------------------");
+		System.out.println("-------------------------------------");
 	}
 	public static String[][] spielfeldAnlegen(int Zeilen, int Spalten, boolean mienenanlegen) {
 		String[][] minefield = new String[Zeilen][Spalten];
@@ -52,10 +52,14 @@ public class Game {
 				minefield[z][s] = "[ ]";
 			}
 		}
+		if (mienenanlegen == true) {
+			
+		
 		minefield[2][0] = "[X]";
 		minefield[2][2] = "[X]";
 		minefield[0][2] = "[X]";
 		mienen = 3;
+		}
 		return minefield;
 	}
 	
