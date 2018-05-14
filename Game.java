@@ -22,6 +22,8 @@ public class Game {
 			System.out.println("Bummmm - du hast Leider die Mine erwischt!!!!");
 			System.out.println("GAME OVER");
 			return true;
+		}else {
+			feld[Zeile][Spalte] = "[*]";
 		}
 		return false;
 	}
